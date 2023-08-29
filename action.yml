@@ -1,17 +1,9 @@
 name: 'State Drift Report'
 description: 'Generate a Terraform state drift report in Markdown'
 inputs:
-  terragrunt-path:  # id of input
-    description: 'The path of the drifting state'
-    required: true
-  terragrunt-plan:
-    description: 'The output of `terragrunt plan` for a given state'
-    required: true
-    default: ''
-  job-url:
-    description: 'The user-friendly URL of the job where drift was detected'
+  run-id:
     required: false
-    default: 'https://'
+
   
 outputs:
   time: # id of output
