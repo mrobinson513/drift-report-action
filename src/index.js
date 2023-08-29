@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
-var fs = require("fs");
 var core = require("@actions/core");
 var artifact = require("@actions/artifact");
 function run() {
@@ -54,13 +53,7 @@ function run() {
                     for (_i = 0, downloadResponse_1 = downloadResponse; _i < downloadResponse_1.length; _i++) {
                         resp = downloadResponse_1[_i];
                         //console.log(fs.readFileSync(resp.downloadPath))
-                        console.log(fs.readdir(resp.downloadPath, function (err, files) {
-                            if (err)
-                                console.log(err);
-                            else {
-                                files.forEach(function (file) { console.log(file); });
-                            }
-                        }));
+                        console.log(resp.downloadPath);
                     }
                     return [2 /*return*/];
             }
