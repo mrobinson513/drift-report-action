@@ -4,12 +4,11 @@ inputs:
   run-id:
     required: false
 
-  
 outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node16'
+  image: 'dist/index.js'
   args:
     - ${{ inputs.who-to-greet }}
