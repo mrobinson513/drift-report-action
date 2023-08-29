@@ -54,7 +54,13 @@ function run() {
                     for (_i = 0, downloadResponse_1 = downloadResponse; _i < downloadResponse_1.length; _i++) {
                         resp = downloadResponse_1[_i];
                         //console.log(fs.readFileSync(resp.downloadPath))
-                        console.log(fs.readdirSync(resp.downloadPath));
+                        console.log(fs.readdir(resp.downloadPath, function (err, files) {
+                            if (err)
+                                console.log(err);
+                            else {
+                                files.forEach(function (file) { console.log(file); });
+                            }
+                        }));
                     }
                     return [2 /*return*/];
             }
