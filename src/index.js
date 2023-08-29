@@ -38,13 +38,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 var fs = require("fs");
+var core = require("@actions/core");
 var artifact = require("@actions/artifact");
 function run() {
     return __awaiter(this, void 0, void 0, function () {
-        var downloadResponse, _i, downloadResponse_1, resp;
+        var runId, downloadResponse, _i, downloadResponse_1, resp;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, artifact.create().downloadAllArtifacts()];
+                case 0:
+                    runId = core.getInput('run-id') // but don't use it for anything...
+                    ;
+                    return [4 /*yield*/, artifact.create().downloadAllArtifacts()];
                 case 1:
                     downloadResponse = _a.sent();
                     for (_i = 0, downloadResponse_1 = downloadResponse; _i < downloadResponse_1.length; _i++) {
