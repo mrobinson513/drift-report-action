@@ -31,14 +31,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
+const fs = __importStar(__nccwpck_require__(7147));
 const core = __importStar(__nccwpck_require__(6150));
 const artifact = __importStar(__nccwpck_require__(3917));
 async function run() {
     const runId = core.getInput('run-id'); // but don't use it for anything...
     const downloadResponse = await artifact.create().downloadAllArtifacts();
     for (const resp of downloadResponse) {
-        //console.log(fs.readFileSync(resp.downloadPath))
-        console.log(resp.downloadPath);
+        fs.readdir(resp.downloadPath, (err, files) => {
+            if (err)
+                console.log(err);
+            else {
+                files.forEach(file => { console.log(file); });
+            }
+        });
+        //console.log(resp.downloadPath)
     }
 }
 exports.run = run;
