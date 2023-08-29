@@ -53,7 +53,8 @@ function run() {
                     downloadResponse = _a.sent();
                     for (_i = 0, downloadResponse_1 = downloadResponse; _i < downloadResponse_1.length; _i++) {
                         resp = downloadResponse_1[_i];
-                        console.log(fs.readFileSync(resp.downloadPath));
+                        //console.log(fs.readFileSync(resp.downloadPath))
+                        console.log(fs.readdirSync(resp.downloadPath));
                     }
                     return [2 /*return*/];
             }
