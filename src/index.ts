@@ -7,16 +7,10 @@ export async function run(): Promise<void> {
   const downloadResponse = await artifact.create().downloadAllArtifacts()
   for (const resp of downloadResponse) {
     //console.log(fs.readFileSync(resp.downloadPath))
-    console.log(
-      fs.readdir(resp.downloadPath, (err,files) => {
-        if (err)
-          console.log(err)
-        else {
-          files.forEach(file => {console.log(file)})
-        }
-      }
-    ))
+    console.log(resp.downloadPath)
+
   }
 }
+
 
 run()
