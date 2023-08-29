@@ -8,8 +8,14 @@ export async function run(): Promise<void> {
   for (const resp of downloadResponse) {
     //console.log(fs.readFileSync(resp.downloadPath))
     console.log(
-      fs.readdirSync(resp.downloadPath)
-    )
+      fs.readdir(resp.downloadPath, (err,files) => {
+        if (err)
+          console.log(err)
+        else {
+          files.forEach(file => {console.log(file)})
+        }
+      }
+    ))
   }
 }
 
