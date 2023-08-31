@@ -44,7 +44,7 @@ async function run() {
                 console.log(err);
             else {
                 files.forEach(file => {
-                    console.log(file);
+                    console.log(`${dir}/${file}`);
                     const text = fs.readFileSync(`${dir}/${file}`, 'utf8');
                     console.log(text);
                 });

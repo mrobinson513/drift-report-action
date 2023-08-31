@@ -12,7 +12,7 @@ export async function run(): Promise<void> {
           console.log(err)
         else {
           files.forEach(file => {
-            console.log(file);
+            console.log(`${dir}/${file}`);
             const text = fs.readFileSync(`${dir}/${file}`, 'utf8');
             console.log(text);
           })
