@@ -6,13 +6,14 @@ let ejs = require('ejs')
 
 export async function run(): Promise<void> {
 
-  let date: Date = new Date()
+  let current_date: Date = new Date()
+  const date_string = current_date.toISOString();
   const runId = core.getInput('run-id') // but don't use it for anything...
   const downloadResponse = await artifact.create().downloadAllArtifacts()
 
   console.log(
     ejs.render(
-      'State Drift Report for <%= isoDate %>', {isoDate: date.toISOString()}
+      'State Drift Report for <%= isoDate %>', {isoDate: date_string}
     )
   )
 
