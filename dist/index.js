@@ -36,11 +36,15 @@ const core = __importStar(__nccwpck_require__(6150));
 const artifact = __importStar(__nccwpck_require__(3917));
 let ejs = __nccwpck_require__(4724);
 async function run() {
+    let date = new Date();
+    const today = date.toISOString;
     const runId = core.getInput('run-id'); // but don't use it for anything...
     const downloadResponse = await artifact.create().downloadAllArtifacts();
+    console.log(ejs.render('State Drift Report for <=% date %>', { date: today }));
     for (const resp of downloadResponse) {
         const dir = resp.artifactName;
-        const tgPath = dir.replaceAll('_', '/');
+        // rebuild the TG path from the artifact name and drop the "plan-output" text
+        const tgPath = dir.replaceAll('_', '/').replaceAll('-plan-output', '');
         console.log(ejs.render('Terragrunt Path: <%= path %>', { path: tgPath }));
         fs.readdir(resp.downloadPath, (err, files) => {
             if (err)
