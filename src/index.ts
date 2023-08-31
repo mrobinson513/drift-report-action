@@ -10,7 +10,11 @@ export async function run(): Promise<void> {
         if (err)
           console.log(err)
         else {
-          files.forEach(file => {console.log(file)})
+          files.forEach(file => {
+            console.log(file);
+            const text = fs.readFileSync(file, 'utf8');
+            console.log(text);
+          })
         }
     })
     //console.log(resp.downloadPath)
