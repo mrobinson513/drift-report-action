@@ -49,8 +49,8 @@ async function run() {
             if (err)
                 console.log(err);
             else {
+                console.log(ejs.render('Terragrunt Path: <%= path %>', { path: tgPath }));
                 files.forEach(file => {
-                    console.log(ejs.render('Terragrunt Path: <%= path %>', { path: tgPath }));
                     const text = fs.readFileSync(`${dir}/${file}`, 'utf8');
                     console.log(text);
                 });
