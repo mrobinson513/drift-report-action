@@ -45,13 +45,12 @@ async function run() {
         const dir = resp.artifactName;
         // rebuild the TG path from the artifact name and drop the "plan-output" text
         const tgPath = dir.replaceAll('_', '/').replaceAll('-plan-output', '');
-        console.log(ejs.render('Terragrunt Path: <%= path %>', { path: tgPath }));
         fs.readdir(resp.downloadPath, (err, files) => {
             if (err)
                 console.log(err);
             else {
                 files.forEach(file => {
-                    console.log(`${dir}/${file}`);
+                    console.log(ejs.render('Terragrunt Path: <%= path %>', { path: tgPath }));
                     const text = fs.readFileSync(`${dir}/${file}`, 'utf8');
                     console.log(text);
                 });
