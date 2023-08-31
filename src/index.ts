@@ -12,7 +12,7 @@ export async function run(): Promise<void> {
 
   console.log(
     ejs.render(
-      'State Drift Report for <%= isoDate %>', {isoDate: date.toISOString}
+      'State Drift Report for <%= isoDate %>', {isoDate: date.toISOString()}
     )
   )
 
